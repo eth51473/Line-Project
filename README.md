@@ -1,4 +1,27 @@
-# Getting Started with Create React App
+# Line Project
+
+## Pitch/Idea
+
+In this app users will be able to register/login. Once logged in users will be able to search for and find new spots to 
+go slacklining in an area of their choosing. Users will also be able to post their own favorite spots for others to 
+see. very similar to the App "Mountain Project" used for outdoor rock climbing.
+
+## MVP
+
+* User Login/Register
+* Menu with areas by region and a search bar, display spots that are within that area when clicked
+* functionality to post a new spot.
+
+## Future Features
+
+* connect google maps api and update to show spots near you/ in the area you search
+* be able to bookmark/favorite different spots you like
+* add share option to different spots to allow users to send a spot they find as a text 
+* allow users to make comments on posts
+
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
