@@ -1,4 +1,5 @@
 # Line Project
+![sean-benesh-vfJPtNFGfVs-unsplash](https://user-images.githubusercontent.com/73859879/139470851-974b9c52-f260-4b01-b30f-1db1f8d7aab1.jpg)
 
 ## Pitch/Idea
 
