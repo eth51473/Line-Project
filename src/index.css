@@ -1,0 +1,74 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  background-color: lightgray;
+}
+header {
+  margin: 20px 0px;
+  width: 300px;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  justify-content: space-evenly;
+  align-content: space-between;
+}
+.flex-column {
+  flex-direction: column;
+}
+.body-info {
+  height: 300px;
+  width: 300px;
+}
+input {
+  width: 200px;
+  align-self: center;
+  margin: 10px 0px;
+}
+.side-bar {
+  height: 100vh;
+  width: 150px;
+  background-color: black;
+  position: absolute;
+  left: -200px;
+}
+.side-bar-active {
+  height: 100vh;
+  width: 150px;
+  background-color: black;
+  position: absolute;
+  left: 0px;
+  
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color:black;
+}
+li a {
+  color: white;
+}
+li {
+  margin-bottom: 15px;
+}
+#mapPlacement {
+  width: 100%;
+  margin-left: 500px;
+}
+.error-message{
+  color: rgb(245, 50, 50);
+}
+label{
+  display: block;
+}
+input{
+  border-radius: 5px;
+  border:black 1px solid;
+  height: 24px;
+  padding: 2px;
+}
