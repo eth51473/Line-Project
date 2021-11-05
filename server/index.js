@@ -27,6 +27,9 @@ const verifyJWT = (req,res,next) =>{
   }
 }
 
+app.get('/api/isuserauth',verifyJWT,(req,res)=>{
+  res.json({auth: true, message: "Authenticated"})
+})
 app.post('/api/newuser',uCtrl.newUser)
 app.post('/api/login',  uCtrl.login)
 app.post('/api/newspot',spotCtrl.newSpot)

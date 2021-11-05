@@ -1,7 +1,7 @@
 const spots = require ("../models/spots")
 module.exports ={
   newSpot: async(req,res) =>{
-    const{title,line_length,description,location} = req.body;
+    const{title,lineLength: line_length,descrip: description,city:location} = req.body;
   
     const newSpot = await spots.create({
       title,

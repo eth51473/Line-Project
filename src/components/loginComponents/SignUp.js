@@ -19,6 +19,7 @@ function SignUp() {
     .required('Confirm Password is required')
   })
   return (
+    <div className="forms">
     <Formik
     initialValues={{
       username: '',
@@ -35,17 +36,18 @@ function SignUp() {
     >
       {formik => (
         <div className="flex-center flex-column">
-          <h1>Sign up</h1>
+          <div className="form-header"><h1>Sign up</h1></div>
           <Form>
-            <TextField label="username: " name ="username" type="text"/>
-            <TextField label="password: " name ="password" type="text"/>
-            <TextField label="Confirm Password: " name ="confirmPassword" type="text"/>
+            <TextField label="" name ="username" type="text" placeholder="username"/>
+            <TextField label="" name ="password" type="text" placeholder="password"/>
+            <TextField label="Confirm Password: " name ="confirmPassword" type="text"placeholder="Password Again" />
             <button type="submit">Register</button>
-            <button type="reset">Reset</button>
+            
           </Form>
         </div>
       )}
     </Formik>
+    </div>
   )
 }
 

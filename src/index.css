@@ -9,6 +9,12 @@ header {
   margin: 20px 0px;
   width: 300px;
 }
+header a{
+  color: black;
+}
+.menu-icon:hover{
+  cursor: pointer;
+}
 .flex-center {
   display: flex;
   justify-content: center;
@@ -31,44 +37,116 @@ input {
 .side-bar {
   height: 100vh;
   width: 150px;
-  background-color: black;
+  background-color: #57b846;
   position: absolute;
   left: -200px;
+  transition: 500ms;
 }
 .side-bar-active {
   height: 100vh;
   width: 150px;
-  background-color: black;
+  background-color: #57b846;
   position: absolute;
   left: 0px;
-  
+  transition: 500ms;
+}
+li a{
+  font-size: 20px;
+  color: white;
+  margin: 20px;
 }
 ul {
   list-style: none;
 }
 a {
   text-decoration: none;
-  color:black;
+  color: #57b846;
 }
-li a {
-  color: white;
-}
+
 li {
-  margin-bottom: 15px;
+  margin: 15px 0px
+  
 }
 #mapPlacement {
   width: 100%;
   margin-left: 500px;
 }
-.error-message{
+.error-message {
   color: rgb(245, 50, 50);
 }
-label{
+label {
   display: block;
 }
-input{
-  border-radius: 5px;
-  border:black 1px solid;
-  height: 24px;
-  padding: 2px;
+input {
+  border-radius: 20px;
+  border:none;
+  height: 30px;
+  padding-left: 20px;
+  font-size: 16px;
+  width:200px;
+  height: 40px;
+}
+.forms {
+  background-color: rgb(236, 234, 234);
+  border-radius: 15px;
+  width: 300px;
+  margin: auto;
+  padding: 15px;
+}
+input:focus {
+  outline-color: rgb(100, 160, 100);
+}
+.forms button {
+  outline: none;
+  border: none;
+
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 5px;
+  
+  align-items: center;
+  padding: 0, 15px;
+  width:200px;
+  height: 50px;
+  background-color: #57b846;
+  border-radius: 25px;
+  font-size: 15px;
+  color: #fff;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.forms button:hover {
+  cursor: pointer;
+}
+.form-header{
+  margin-top: -15px;
+  margin-left: -15px;
+  margin-right: -15px;
+  width: 330px;
+  display: flex;
+  background-color:#57b846 ;
+  height: 75px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 15px 15px 0px 0px;
+  margin-bottom: 15px;
+}
+.login-link{
+  width: 50px;
+  height: 30px;
+  padding: 3px 8px;
+}
+.login-link h3{
+  font-size: 14px;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }

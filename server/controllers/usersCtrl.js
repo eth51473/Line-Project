@@ -39,12 +39,12 @@ module.exports = {
       const validPass = await bcrypt.compare(password,bcryptPass)
       if(validPass){
         const token = jwt.sign({userId},"jwtSecret",{
-          expiresIn: 300,
+          expiresIn: '1h',
         })
         res.status(200).json({auth: true, token, usernameCheck: usernameCheck[1] })
       }
     }else{
-      res.status(401).send('User info incorrect')
+      res.status(401).send({auth: false, message: "user not found" })
     }
     
   }
