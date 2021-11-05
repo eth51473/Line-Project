@@ -1,62 +1,72 @@
-import React,{useState} from 'react'
-import axios from 'axios'
+import React,{useState} from "react";
+import { Formik, Form } from "formik";
+import * as yup from "yup";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { TextField } from './loginComponents/TextField';
 function AddPost() {
-  const [title,setTitle] = useState('')
-  const [lineLength,setLineLength] = useState('')
-  const [descrip,setDescrip] = useState('')
-  const [city,setCity] = useState('')
-  const submitHandler = async(e) =>{
-    e.preventDefault()
-    await axios.post('http://localhost:3001/api/newspot',{
-      title,
-      lineLength,
-      descrip,
-      city
-    })
-  }
+  const validate = yup.object({
+    title: yup
+      .string()
+      .max(25, "Must be 25 characters or less")
+      .required("title is Required"),
+    line_length: yup
+    .number()
+    .typeError('line length must be a number')
+    .max(20000, "This Line Is too long")
+    .required("line_length is Required"),
+    description: yup
+    .string()
+    .max(250, "must be under 250 characters")
+    .required("description is Required"),
+    location: yup
+    .string()
+    .max(50, "must be under 250 characters")
+    .required("location is Required"),
+  
+  });
   return (
-    <div className="flex-center">
-      <form onSubmit={submitHandler}>
-        <label htmlFor="title">Title:</label>
-        <input 
-        type="text" 
-        id="title" 
-        value={title}
-        onChange={(e)=>setTitle(e.target.value)}
-        />
+    <div className="forms">
+    <Formik
+      initialValues={{
+        title: "",
+        line_length: "",
+        description: "",
+        location: "",
+      }}
+      validationSchema={validate}
+      onSubmit={ async(values) => {
+        console.log('hello please work')
+        let { title,line_length,description,location } = values;
+        try {
+          const response = await axios.post('http://localhost:3001/api/newspot',{
+          title,
+          line_length,
+          description,
+          location
+        })
+        toast.success('new spot successfully created')
+        } catch (error) {
+          toast.info('this title is already taken')
+          console.log(error)
+        }
+        }}
+    >
+      {(formik) => (
+        <div className="flex-center flex-column">
+          <div className="form-header"><h1>NEW SPOT</h1></div>
+          <Form>
+            <TextField label=""name="title" type="text" placeholder="title"/>
+            <TextField label=""placeholder="line_length"name="line_length" type="text" />
+            <TextField label=""placeholder="description"name="description" type="text" />
+            <TextField label=""placeholder="City Name"name="location" type="text" />
+            <button type="submit">submit</button>
+          </Form>
+        </div>
         
-        
-
-        <label htmlFor="line-length">line-length (ft)</label>
-        <input 
-        type="text" 
-        id="line-length"
-        value={lineLength}
-        onChange={(e)=> setLineLength(e.target.value)}
-        />
-
-        <label htmlFor="description">description</label>
-        <textarea 
-        id="description"
-        rows={5}
-        cols={28}
-        value={descrip}
-        onChange={(e)=> setDescrip(e.target.value)}
-        >
-        </textarea>
-
-        <label htmlFor="location">City:</label>
-        <input 
-        type="text" 
-        id="location"
-        value={city}
-        onChange={(e)=> setCity(e.target.value)}
-        />
-        <br />
-        <button type="submit">submit</button>
-      </form>
+      )}
+    </Formik>
     </div>
-  )
+  );
 }
-
 export default AddPost

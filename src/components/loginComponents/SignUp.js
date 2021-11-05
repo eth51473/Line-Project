@@ -1,10 +1,12 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {Formik,Form} from 'formik'
 import {TextField} from './TextField'
 import * as yup from 'yup'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
-function SignUp() {
+import { toast } from 'react-toastify'
+function SignUp({signUpStatus}) {
+  
   const validate = yup.object({
     username: yup.string()
     .min(6,'Username must be at least 6 characters')
@@ -26,17 +28,25 @@ function SignUp() {
       password: '',
     }}
     validationSchema={validate}
-    onSubmit= {values =>{
+    onSubmit= {async(values) =>{
       let {username,password} = values
-      axios.post('http://localhost:3001/api/newuser',{
-      username,
-      password
-    }).then((res)=>console.log(res)) //redirect to login somehwere from here
+      try {
+        const response = await axios.post('http://localhost:3001/api/newuser',{
+        username,
+        password
+    })
+      toast.success("Registration Successful, Please Log In")
+      signUpStatus(true)
+      } catch (error) {
+        toast.error('Seems like you already have an account')
+        console.log(error.message)
+      }
+      
     }}
     >
       {formik => (
         <div className="flex-center flex-column">
-          <div className="form-header"><h1>Sign up</h1></div>
+          <div className="form-header"><h1>Register</h1></div>
           <Form>
             <TextField label="" name ="username" type="text" placeholder="username"/>
             <TextField label="" name ="password" type="text" placeholder="password"/>

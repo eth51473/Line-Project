@@ -4,7 +4,7 @@ import { navData } from '../navComponents/NavData'
 import {CgMenu} from 'react-icons/cg'
 import {toast} from 'react-toastify'
 
-function Header({loginStatus,updateLoginStatus}) {
+function Header({loginStatus,updateLoginStatus,updateSignUpStatus}) {
   const [sideBar, setSideBar] = useState(false)
   const displayMenu = () => {
     setSideBar(!sideBar)
@@ -13,10 +13,11 @@ function Header({loginStatus,updateLoginStatus}) {
     toast.info('You have Logged out')
     localStorage.clear()
     updateLoginStatus(false)
+    updateSignUpStatus(false)
   }
   
   return (
-    <div className="flex-center">
+    <div className="flex-center entire-header">
     <header className="flex-center">
       <div className="menu-icon"><CgMenu 
       onClick={displayMenu} 

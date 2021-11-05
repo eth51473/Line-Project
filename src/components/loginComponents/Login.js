@@ -29,29 +29,29 @@ function Login({loginStatus, updateLoginStatus}) {
       validationSchema={validate}
       onSubmit={async (values) => {
         let { username, password } = values;
-        const response = await axios.post("http://localhost:3001/api/login", {
+        try {
+          const response = await axios.post("http://localhost:3001/api/login", {
           username,
           password,
-        },
-        )
-        console.log(response +"this the response");
-        // console.log(response.st);
-        const { token } = response.data;
+        })
+          const { token } = response.data;
         
-        if(token){
-          localStorage.setItem('token', token)
-          const authResponse = await axios.get('http://localhost:3001/api/isuserauth',{
-            headers:{
-              "x-access-token":localStorage.getItem("token")
+          if(token){
+            localStorage.setItem('token', token)
+            const authResponse = await axios.get('http://localhost:3001/api/isuserauth',{
+              headers:{
+                "x-access-token":localStorage.getItem("token")
+              }
+            })
+            if(authResponse.data.auth){
+              updateLoginStatus(true)
+              toast.success('Successful Login')
             }
-          })
-          if(authResponse.data.auth){
-            updateLoginStatus(true)
-            toast.success('Successful Login')
-          }
           
-        }
-        
+          }
+        } catch (error) {
+          toast.error('incorrect login info')
+        }   
       }}
     >
       {(formik) => (

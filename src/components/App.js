@@ -8,8 +8,10 @@ import  Map from './Map'
 import SignUp from './loginComponents/SignUp'
 import AddPost from './AddPost'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 function App() {
   const [isLoggedIn,setIsLoggedIn] = useState(false)
+  const [signUpStatus,setSignUpStatus] = useState(false)
   useEffect(()=>{
     
     axios.get('http://localhost:3001/api/isuserauth',{
@@ -26,7 +28,7 @@ function App() {
   },[])
   return (
     <div>
-      <Header loginStatus= {isLoggedIn} updateLoginStatus={setIsLoggedIn}/>
+      <Header loginStatus= {isLoggedIn} updateLoginStatus={setIsLoggedIn} updateSignUpStatus={setSignUpStatus}/>
       
       <Switch>
       
@@ -51,12 +53,12 @@ function App() {
         </Route>
 
         <Route exact path = "/signup">
-          <SignUp />
+          {signUpStatus ? <Redirect to="/login" /> : <SignUp signUpStatus= {setSignUpStatus}/>}
         </Route>
         
         <Route exact path = "/addspot">
-        {!isLoggedIn ? <Redirect to="/" /> : <AddPost
-          />}
+        {!isLoggedIn ? <Redirect to="/login" />: 
+        <AddPost />}
         </Route>
 
       </Switch>

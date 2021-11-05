@@ -4,13 +4,23 @@
 }
 body {
   background-color: lightgray;
+  background-image: url('https://cdn.pixabay.com/photo/2017/01/31/00/41/flowers-2022672_960_720.png');
+  
+  background-position: top right;
+  background-repeat: no-repeat;
+  
+}
+.entire-header{
+  background-color:#57b846 ;
+  margin-bottom: 10px;
 }
 header {
   margin: 20px 0px;
   width: 300px;
+  color: white;
 }
 header a{
-  color: black;
+  color: white;
 }
 .menu-icon:hover{
   cursor: pointer;
@@ -26,8 +36,10 @@ header a{
   flex-direction: column;
 }
 .body-info {
-  height: 300px;
   width: 300px;
+  background-color: rgb(236, 236, 236);
+  padding: 15px;
+  border-radius: 5px;
 }
 input {
   width: 200px;
@@ -35,19 +47,21 @@ input {
   margin: 10px 0px;
 }
 .side-bar {
-  height: 100vh;
+  height: 89vh;
   width: 150px;
   background-color: #57b846;
   position: absolute;
   left: -200px;
+  top:78px;
   transition: 500ms;
 }
 .side-bar-active {
-  height: 100vh;
+  height: 89vh;
   width: 150px;
   background-color: #57b846;
   position: absolute;
   left: 0px;
+  top:78px;
   transition: 500ms;
 }
 li a{
@@ -140,7 +154,25 @@ input:focus {
 .login-link h3{
   font-size: 14px;
 }
-
+.search-btn{
+  width: 200px;
+  height: 50px;
+  border-radius: 8px;
+}
+.search-page{
+  background-color: rgb(223, 222, 222);
+  width: 70%;
+  margin: auto;
+  padding: 15px;
+  border-radius: 24px;
+  }
+.spot-card{
+  background-color: rgb(243, 243, 243);
+  margin: 10px;
+  height: 80px;
+  padding: 10px;
+  border-radius: 4px;
+}
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
