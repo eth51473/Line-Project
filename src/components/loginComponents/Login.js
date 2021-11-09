@@ -57,6 +57,7 @@ function Login({loginStatus, updateLoginStatus}) {
       {(formik) => (
         <div className="flex-center flex-column">
           <div className="form-header"><h1>Sign In</h1></div>
+          <h4 className="form-msg">Sign in to create posts and contribute to the community :)</h4>
           <Form>
             <TextField label=""name="username" type="text" placeholder="Username"/>
             <TextField label=""placeholder="Password"name="password" type="password" />

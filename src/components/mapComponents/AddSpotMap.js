@@ -10,8 +10,11 @@ const mapStyles = {
 const {GAPI_KEY} = process.env
 
 export function MapContainer ({google,setSpotLat,setSpotLng}){
+  
   const [userLat,setUserLat] = useState(40.39)
   const [userLong,setUserLong] = useState(-111.7)
+  const [zoomLvl,setZoomLvl] =useState(11)
+
   useEffect(()=>{
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition((position)=>{
@@ -30,7 +33,7 @@ export function MapContainer ({google,setSpotLat,setSpotLng}){
       <Map
 
         google={google}
-        zoom={11}
+        zoom={zoomLvl}
         style={mapStyles}
        
         center={
@@ -50,7 +53,10 @@ export function MapContainer ({google,setSpotLat,setSpotLng}){
       <Marker position ={{
             lat: userLat,
             lng: userLong
-          }} />
+          }}
+          animation = {google.maps.Animation.DROP} 
+          // onClick ={(zoomLvl) =>setZoomLvl(16)}
+          />
     </Map>
     </div>
     );

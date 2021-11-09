@@ -27,13 +27,11 @@ function AddPost() {
     latitude: yup
     .number()
     .max(90, "cant be larger than 90")
-    .min(-90,"cant be smaller than -90")
-    .required("latitude is Required"),
+    .min(-90,"cant be smaller than -90"),
     longitude: yup
     .number()
     .max(180, "cant be larger than 180")
     .min(-180,"cant be smaller than -180")
-    .required("longitude is Required"),
   });
   const [spotLat,setSpotLat]= useState('')
   const [spotLng,setSpotLng]= useState('')
@@ -47,6 +45,7 @@ function AddPost() {
         location: "",
         latitude: '',
         longitude: '',
+        coords: '',
       }}
       validationSchema={validate}
       onSubmit={ async(values) => {

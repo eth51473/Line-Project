@@ -15,6 +15,7 @@ export function MapContainer ({google}){
   const [userLat,setUserLat] = useState(40.39)
   const [userLong,setUserLong] = useState(-111.7)
   const [markerList,setMarkerList] =useState([])
+ 
   useEffect(()=>{
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition((position)=>{
@@ -26,9 +27,8 @@ export function MapContainer ({google}){
     }
       axios.get('http://localhost:3001/api/getcoords')
       .then((req,res)=>{
-        
+        console.log(req.data)
           const markerPos =req.data[0].map((item)=>{
-            console.log(item)
           return (item.coords)
           })
           setMarkerList(markerList => [markerList,...markerPos])
@@ -41,7 +41,7 @@ export function MapContainer ({google}){
       <Map
 
         google={google}
-        zoom={13}
+        zoom= {11}
         style={mapStyles}
        
         center={
@@ -52,12 +52,12 @@ export function MapContainer ({google}){
         }
         
     >
-      <Marker 
+      {/* <Marker 
       position ={{
             lat: userLat,
             lng: userLong
           }}
-      label="you are here amigo" />
+      label="you are here amigo" /> */}
       {markerList.map((item,index)=>{
         console.log(item)
         return(
@@ -65,7 +65,10 @@ export function MapContainer ({google}){
             lat: item.lat,
             lng: item.lng
           }}
+          animation = {google.maps.Animation.DROP}
           label={`${item.label}`}
+          labelStyle={{color:"red"}}
+          
           />
         )
         

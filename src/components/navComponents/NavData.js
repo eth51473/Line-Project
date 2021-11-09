@@ -1,15 +1,15 @@
 
 export const navData = [
   {
-    title: 'home',
+    title: 'Home',
     path: '/'
   },
   {
-    title: 'login',
+    title: 'Login',
     path: '/login'
   },
   {
-    title: 'Search',
+    title: 'Find Spots',
     path: '/search'
   },
   {
@@ -20,4 +20,5 @@ export const navData = [
     title: 'Near Me',
     path: '/map'
   },
+  
 ]
