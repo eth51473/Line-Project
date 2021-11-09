@@ -12,4 +12,12 @@ export const navData = [
     title: 'Search',
     path: '/search'
   },
+  {
+    title: 'Add Spot',
+    path: '/addspot'
+  },
+  {
+    title: 'Near Me',
+    path: '/map'
+  },
 ]

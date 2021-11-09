@@ -4,6 +4,7 @@ import * as yup from "yup";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { TextField } from './loginComponents/TextField';
+import AddSpotMap from "./mapComponents/AddSpotMap";
 function AddPost() {
   const validate = yup.object({
     title: yup
@@ -23,8 +24,19 @@ function AddPost() {
     .string()
     .max(50, "must be under 250 characters")
     .required("location is Required"),
-  
+    latitude: yup
+    .number()
+    .max(90, "cant be larger than 90")
+    .min(-90,"cant be smaller than -90")
+    .required("latitude is Required"),
+    longitude: yup
+    .number()
+    .max(180, "cant be larger than 180")
+    .min(-180,"cant be smaller than -180")
+    .required("longitude is Required"),
   });
+  const [spotLat,setSpotLat]= useState('')
+  const [spotLng,setSpotLng]= useState('')
   return (
     <div className="forms">
     <Formik
@@ -33,6 +45,8 @@ function AddPost() {
         line_length: "",
         description: "",
         location: "",
+        latitude: '',
+        longitude: '',
       }}
       validationSchema={validate}
       onSubmit={ async(values) => {
@@ -43,7 +57,12 @@ function AddPost() {
           title,
           line_length,
           description,
-          location
+          location,
+          coords: {
+            lat:`${spotLat}`,
+            lng:`${spotLng}`,
+            label: title
+          }
         })
         toast.success('new spot successfully created')
         } catch (error) {
@@ -60,12 +79,16 @@ function AddPost() {
             <TextField label=""placeholder="line_length"name="line_length" type="text" />
             <TextField label=""placeholder="description"name="description" type="text" />
             <TextField label=""placeholder="City Name"name="location" type="text" />
+            <h3>click on the map below for exact coords</h3>
+            <TextField label=""placeholder="Latitude"name="latitude" type="text" value={spotLat} />
+            <TextField label=""placeholder="Longitude"name="longitude" type="text" value={spotLng}  />
             <button type="submit">submit</button>
           </Form>
         </div>
         
       )}
     </Formik>
+    <AddSpotMap setSpotLat={setSpotLat} setSpotLng={setSpotLng}/>
     </div>
   );
 }

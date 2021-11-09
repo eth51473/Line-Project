@@ -20,6 +20,9 @@ const spots = connection.define("spots", {
   location: {
     type: DataTypes.STRING(50)
   },
+  coords:{
+    type: DataTypes.JSON
+  }
 })
 
 spots.sync({alter: true});

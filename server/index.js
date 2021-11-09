@@ -34,6 +34,7 @@ app.post('/api/newuser',uCtrl.newUser)
 app.post('/api/login',  uCtrl.login)
 app.post('/api/newspot',spotCtrl.newSpot)
 app.get('/api/findspots',spotCtrl.getSpots)
+app.get('/api/getcoords',spotCtrl.allCoords)
 
 
 app.listen(3001,()=>{

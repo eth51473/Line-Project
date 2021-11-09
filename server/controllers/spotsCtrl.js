@@ -2,7 +2,7 @@ const spots = require ("../models/spots")
 const seq = require('../database/seq')
 module.exports ={
   newSpot: async(req,res) =>{
-    const{title,line_length,description,location} = req.body;
+    const{title,line_length,description,location,coords} = req.body;
     console.log(title)
     try {
       const spotCheck = await seq.query(`SELECT * FROM spots WHERE title = '${title}'`)
@@ -13,16 +13,14 @@ module.exports ={
         title,
         line_length,
         description,
-        location
+        location,
+        coords
       })
       res.json(newSpot)
     }
     } catch (error) {
       console.log(error)
     }
-    
-    
-    
   },
   getSpots: async(req,res) =>{
     const {searchTxt} = req.query
@@ -34,5 +32,13 @@ module.exports ={
     } catch{
       console.log('no dice')
     }
-  }
+  },
+  allCoords: async(req,res) =>{
+    try{
+      const coords = await seq.query(`SELECT coords FROM spots`)
+      res.status(200).send(coords)
+    } catch{
+      console.log('no dice')
+    }
+  },
 }
