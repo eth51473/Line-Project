@@ -38,6 +38,7 @@ function Login({loginStatus, updateLoginStatus}) {
         
           if(token){
             localStorage.setItem('token', token)
+
             const authResponse = await axios.get('http://localhost:3001/api/isuserauth',{
               headers:{
                 "x-access-token":localStorage.getItem("token")
@@ -47,6 +48,7 @@ function Login({loginStatus, updateLoginStatus}) {
               updateLoginStatus(true)
               toast.success('Successful Login')
             }
+            localStorage.setItem('user', username)
           
           }
         } catch (error) {

@@ -5,8 +5,7 @@ import {CgMenu} from 'react-icons/cg'
 import {MdLogout} from 'react-icons/md'
 import {toast} from 'react-toastify'
 
-function Header({loginStatus,updateLoginStatus,updateSignUpStatus}) {
-  const [sideBar, setSideBar] = useState(false)
+function Header({loginStatus,updateLoginStatus,updateSignUpStatus,sideBar,setSideBar}) {
   const displayMenu = () => {
     setSideBar(!sideBar)
   }
@@ -29,9 +28,8 @@ function Header({loginStatus,updateLoginStatus,updateSignUpStatus}) {
       // Login/Register
       <div className="login-link"><Link to ="/login"><h3>Login/</h3><h3>Register</h3></Link></div>
       }
-      
+     
       </header>
-
       <nav className={sideBar ? "side-bar-active flex-center nav-color" : "side-bar flex-center nav-color"}>
       <ul>
         {navData.map((item,index)=>{

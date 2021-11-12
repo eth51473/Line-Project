@@ -1,11 +1,11 @@
 import React, {useState,useEffect} from 'react';
-import GoogleMapReact, { Map, GoogleApiWrapper,Marker, InfoWindow } from 'google-maps-react';
+import { Map, GoogleApiWrapper,Marker, InfoWindow } from 'google-maps-react';
 require("dotenv").config();
 
 const mapStyles = {
-  width: '500px',
-  height: '250px',
-  margin:'20px auto 10px auto'
+  width: '100%',
+  height: '100%',
+  margin:'auto'
 };
 const {GAPI_KEY} = process.env
 
@@ -63,5 +63,5 @@ export function MapContainer ({google,setSpotLat,setSpotLng}){
 }
 
 export default GoogleApiWrapper({
-  apiKey: ''
+  apiKey: GAPI_KEY
 })(MapContainer);

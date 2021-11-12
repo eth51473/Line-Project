@@ -5,17 +5,15 @@ require("dotenv").config();
 
 const mapStyles = {
   position:'relative',
-  width: '500px',
-  height: '250px',
+  width: '70%',
+  height: '60%',
   margin:'10px auto 10px auto'
 };
-const {GAPI_KEY} = process.env
-
+const API_KEY = process.env.REACT_APP_API_KEY
 export function MapContainer ({google}){
   const [userLat,setUserLat] = useState(40.39)
   const [userLong,setUserLong] = useState(-111.7)
   const [markerList,setMarkerList] =useState([])
- 
   useEffect(()=>{
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition((position)=>{
@@ -52,37 +50,39 @@ export function MapContainer ({google}){
         }
         
     >
-      {/* <Marker 
-      position ={{
-            lat: userLat,
-            lng: userLong
-          }}
-      label="you are here amigo" /> */}
       {markerList.map((item,index)=>{
-        console.log(item)
+        if(item.lat === '' || item.lng ===''){
+          console.log('bad cookie')
+        }else{
+          console.log('reload markers')
         return(
-          <Marker key={index} position={{
+          <Marker 
+          key={index} 
+          position={{
             lat: item.lat,
             lng: item.lng
-          }}
+          }
+          }
           animation = {google.maps.Animation.DROP}
+          style={{color:'red'}}
           label={`${item.label}`}
-          labelStyle={{color:"red"}}
-          
           />
         )
-        
+        }
       })
+    
       }
       {/* <Marker position ={{
             lat: 40.39,
             lng: -111.7
           }} /> */}
+      
+      
     </Map>
     </div>
     );
 }
 
 export default GoogleApiWrapper({
-  apiKey: ''
+  apiKey: API_KEY
 })(MapContainer);

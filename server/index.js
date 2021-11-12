@@ -6,20 +6,23 @@ const uCtrl = require("./controllers/usersCtrl")
 const spotCtrl = require("./controllers/spotsCtrl")
 const { JsonWebTokenError } = require('jsonwebtoken')
 const jwt = require('jsonwebtoken')
+require("dotenv").config();
 app.use(cors())
 app.use(express.json())
-
+// app.use(express.static(path.resolve(__dirname,"../build")))
 //middleware
+const {JWTSECRET} = process.env
 const verifyJWT = (req,res,next) =>{
   const token = req.headers["x-access-token"]
   
   if(!token){
     res.send(req.data)
   }else{
-    jwt.verify(token, "jwtSecret", (err,decoded) =>{
+    jwt.verify(token, JWTSECRET, (err,decoded) =>{
       if(err){
         res.json({auth: false, message: "U failed to authenticate"})
       }else{
+        console.log(req.userId)
         req.userId = decoded.id
         next()
       }
@@ -35,8 +38,12 @@ app.post('/api/login',  uCtrl.login)
 app.post('/api/newspot',spotCtrl.newSpot)
 app.get('/api/findspots',spotCtrl.getSpots)
 app.get('/api/getcoords',spotCtrl.allCoords)
-
-
+app.get('/api/bookmarks', spotCtrl.bookmarks)
+app.get('/api/newbookmark',spotCtrl.newBookmark)
+app.get('/api/savedspots',spotCtrl.savedSpots)
+// app.get('/*', function (req,res) {
+//   res.sendFile(path.join(__dirname, '../build', 'index.html'))
+// })
 app.listen(3001,()=>{
   console.log('up and running on 3001')
 })

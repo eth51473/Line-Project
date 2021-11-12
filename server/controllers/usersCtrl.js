@@ -2,6 +2,8 @@ const users = require("../models/users");
 const sequelize = require('../database/seq')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+require("dotenv").config();
+const {JWTSECRET} = process.env
 module.exports = {
   newUser: async (req, res) => {
     const { username, password } = req.body;
@@ -38,7 +40,7 @@ module.exports = {
       
       const validPass = await bcrypt.compare(password,bcryptPass)
       if(validPass){
-        const token = jwt.sign({userId},"jwtSecret",{
+        const token = jwt.sign({userId},JWTSECRET,{
           expiresIn: '1h',
         })
         res.status(200).json({auth: true, token, usernameCheck: usernameCheck[1] })

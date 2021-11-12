@@ -20,5 +20,9 @@ export const navData = [
     title: 'Near Me',
     path: '/map'
   },
+  {
+    title: 'My spots',
+    path: '/bookmarks'
+  }
   
 ]

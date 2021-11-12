@@ -1,4 +1,5 @@
 const spots = require ("../models/spots")
+const users = require ("../models/users")
 const seq = require('../database/seq')
 module.exports ={
   newSpot: async(req,res) =>{
@@ -41,4 +42,39 @@ module.exports ={
       console.log('no dice')
     }
   },
+  bookmarks: async(req,res)=>{
+    try{
+      let curUser = req.headers.username
+      const currentUserId = await seq.query(`SELECT * FROM users WHERE username = '${curUser}'`)
+
+      let curId = currentUserId[1].rows[0].id
+      const bookmarks = await seq.query(`SELECT * FROM bookmarked_spots WHERE user_id ='${curId}'`)
+      res.status(200).send(bookmarks)
+    }catch{
+      console.log(`request didn't work`)
+    }
+  },
+  newBookmark: async(req,res)=>{
+    try {
+      let {username, spotid} = req.headers
+      const userQuery = await seq.query(`SELECT * FROM users WHERE username = '${username}'`)
+      let curId = userQuery[1].rows[0].id
+      const checkBookmarks = await seq.query(`SELECT * FROM bookmarked_spots WHERE user_id = '${curId}' AND spot_id ='${spotid}' `)
+      if(checkBookmarks[1].rowCount >0){
+        res.send('spot already exists')
+      }else{
+        const updateBookmarks = await seq.query(`INSERT INTO bookmarked_spots(user_id, spot_id)
+      VALUES(${curId},${spotid})`)
+      res.status(200).send('bookmark successful')
+      }
+      
+    } catch (error) {
+      res.send(error)
+    }
+  },
+  savedSpots: async(req,res) =>{
+    const {spot} = req.headers
+    const favSpot = await seq.query(`SELECT * FROM spots WHERE id ='${spot}'`)
+    res.send(favSpot)
+  }
 }

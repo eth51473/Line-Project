@@ -9,9 +9,11 @@ import SignUp from './loginComponents/SignUp'
 import AddPost from './AddPost'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import Bookmark from './Bookmark'
 function App() {
   const [isLoggedIn,setIsLoggedIn] = useState(false)
   const [signUpStatus,setSignUpStatus] = useState(false)
+  const [sideBar, setSideBar] = useState(false)
   useEffect(()=>{
     
     axios.get('http://localhost:3001/api/isuserauth',{
@@ -28,7 +30,13 @@ function App() {
   },[])
   return (
     <div>
-      <Header loginStatus= {isLoggedIn} updateLoginStatus={setIsLoggedIn} updateSignUpStatus={setSignUpStatus}/>
+      <Header 
+      loginStatus= {isLoggedIn} 
+      updateLoginStatus={setIsLoggedIn} 
+      updateSignUpStatus={setSignUpStatus}
+      sideBar ={sideBar}
+      setSideBar={setSideBar}
+      />
       
       <Switch>
       
@@ -37,7 +45,10 @@ function App() {
         </Route>
 
         <Route exact path = "/search">
-          <SearchPage />
+          <SearchPage 
+          sideBar ={sideBar}
+          setSideBar={setSideBar}
+          />
         </Route>
 
         <Route exact path = "/login">
@@ -59,6 +70,11 @@ function App() {
         <Route exact path = "/addspot">
         {!isLoggedIn ? <Redirect to="/login" />: 
         <AddPost />}
+        </Route>
+
+        <Route exact path = "/bookmarks">
+          {!isLoggedIn? <Redirect to="/login" />:
+          <Bookmark/>}
         </Route>
 
       </Switch>

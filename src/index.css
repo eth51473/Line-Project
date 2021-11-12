@@ -19,6 +19,9 @@ header h1{
   
   margin-bottom: 10px;
  }
+ .icon-div:hover{
+  cursor: pointer;
+ }
  .nav-color{
    background-color: #77BFA3;
  }
@@ -67,7 +70,6 @@ header a{
 }
 .icon-box a{
   margin: 30px;
-  
   padding: 5px;
   transition: 400ms;
 }
@@ -81,7 +83,7 @@ input {
   margin: 10px 0px;
 }
 .side-bar {
-  z-index: 1000;
+  z-index: 500;
   height: 89vh;
   width: 180px;
   position: absolute;
@@ -90,7 +92,7 @@ input {
   transition: 500ms;
 }
 .side-bar-active {
-  z-index: 1000;
+  z-index: 500;
   height: 89vh;
   width: 180px;
   position: absolute;
@@ -243,6 +245,34 @@ input:focus {
 }
 .logout:hover{
   cursor: pointer;
+}
+.search-form{
+  margin-left: 28px;
+}
+
+#map{
+  
+}
+
+@keyframes anvil {
+  0% {
+    transform: scale(1) translateY(0px);
+    opacity: 0;
+    box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+  }
+  1% {
+    transform: scale(0.96) translateY(10px);
+    opacity: 0;
+    box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+  }
+  100% {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+    box-shadow: 0 0 500px rgba(241, 241, 241, 0);
+  }
+}
+.popup-content {
+  -webkit-animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
 }
 
 .noselect {
