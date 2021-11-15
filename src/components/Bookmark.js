@@ -12,7 +12,7 @@ function Bookmark() {
   const closeModal = () => setOpen(false)
   const [openInner,setOpenInner]= useState(false)
   const closeInnerModal = () => setOpenInner(false)
-
+  const [loading,setLoading]=useState(true)
   const deleteBookmark= (curSpot)=>{
     console.log('hello')
     console.log(curSpot)
@@ -54,15 +54,17 @@ function Bookmark() {
               console.log(err);
             });
         });
+        {setLoading(false)}
       })
       .catch((err) => console.log(err));
+      
   }, []);
 
   return (
     <div className="flex-center">
       <div className="flex-center body-info flex-column">
         <h1>My Bookmarks</h1>
-        <Link to='/bookmarkupdate'><BiRefresh size={35} style={{color:'black'}}/></Link>
+        <Link to='/bookmarkupdate' className={loading?'refresh-icon':''}><BiRefresh size={35} style={{color:'black'}}/></Link>
         <div className="flex-center flex-column">
           {spotInfo.map((favSpot, index) => {
             return (
@@ -151,6 +153,7 @@ function Bookmark() {
               </div>
             );
           })}
+          
            
         </div>
       </div>

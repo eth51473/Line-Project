@@ -13,7 +13,7 @@ function BookmarkUpdate() {
   const closeModal = () => setOpen(false)
   const [openInner,setOpenInner]= useState(false)
   const closeInnerModal = () => setOpenInner(false)
-  
+  const [loading,setLoading]=useState(true)
 
   const deleteBookmark= (curSpot)=>{
     console.log('hello')
@@ -55,16 +55,18 @@ function BookmarkUpdate() {
             .catch((err) => {
               console.log(err);
             });
+            setLoading(false)
         });
       })
       .catch((err) => console.log(err));
+      
   }, []);
 
   return (
     <div className="flex-center">
       <div className="flex-center body-info flex-column">
         <h1>My Bookmarks</h1>
-        <Link to='/bookmarks' className="refresh-icon"><BiRefresh size={35} 
+        <Link to='/bookmarks' className={loading?'refresh-icon':''}><BiRefresh size={35} 
         style={{
           color:'black'
       }}
