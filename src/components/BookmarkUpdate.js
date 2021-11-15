@@ -6,12 +6,14 @@ import { GrMapLocation } from "react-icons/gr";
 import { MdExpandLess } from "react-icons/md";
 import {RiDeleteBin3Line} from 'react-icons/ri'
 import {BiRefresh} from 'react-icons/bi'
-function Bookmark() {
+import {IconContext} from 'react-icons'
+function BookmarkUpdate() {
   const [spotInfo, setSpotInfo] = useState([]);
   const [open,setOpen]= useState(false)
   const closeModal = () => setOpen(false)
   const [openInner,setOpenInner]= useState(false)
   const closeInnerModal = () => setOpenInner(false)
+  
 
   const deleteBookmark= (curSpot)=>{
     console.log('hello')
@@ -62,7 +64,11 @@ function Bookmark() {
     <div className="flex-center">
       <div className="flex-center body-info flex-column">
         <h1>My Bookmarks</h1>
-        <Link to='/bookmarkupdate'><BiRefresh size={35} style={{color:'black'}}/></Link>
+        <Link to='/bookmarks' className="refresh-icon"><BiRefresh size={35} 
+        style={{
+          color:'black'
+      }}
+      /></Link>
         <div className="flex-center flex-column">
           {spotInfo.map((favSpot, index) => {
             return (
@@ -151,13 +157,10 @@ function Bookmark() {
               </div>
             );
           })}
-           
         </div>
       </div>
-      
     </div>
-   
   );
 }
 
-export default Bookmark;
+export default BookmarkUpdate;

@@ -41,6 +41,7 @@ app.get('/api/getcoords',spotCtrl.allCoords)
 app.get('/api/bookmarks', spotCtrl.bookmarks)
 app.get('/api/newbookmark',spotCtrl.newBookmark)
 app.get('/api/savedspots',spotCtrl.savedSpots)
+app.delete('/api/deletebookmark',spotCtrl.delete)
 // app.get('/*', function (req,res) {
 //   res.sendFile(path.join(__dirname, '../build', 'index.html'))
 // })

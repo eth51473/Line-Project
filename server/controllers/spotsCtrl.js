@@ -76,5 +76,13 @@ module.exports ={
     const {spot} = req.headers
     const favSpot = await seq.query(`SELECT * FROM spots WHERE id ='${spot}'`)
     res.send(favSpot)
+  },
+  delete: async(req,res) =>{
+    const {spot,username} = req.body
+    const findUser = await seq.query(`SELECT * FROM users WHERE username = '${username}'`)
+    const userId = findUser[1].rows[0].id
+    const findId = await seq.query(`SELECT id FROM spots WHERE title= '${spot}'`)
+    const removeSpot = await seq.query(`DELETE FROM bookmarked_spots WHERE spot_id ='${findId[0][0].id}' AND user_id='${userId}'`)
+    res.status(200).send('good job')
   }
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FiPlusCircle } from "react-icons/fi";
 import { BiSearchAlt } from "react-icons/bi";
-import {BsPinMap} from 'react-icons/bs'
+import {BsPinMap,BsBookmarkStar} from 'react-icons/bs'
 function Body() {
   return (
     <div className="flex-center">
@@ -27,7 +27,11 @@ function Body() {
           </Link>
           <Link to="/search">
             <BiSearchAlt size={60} />
-            <h3>Find Spots</h3>
+            <h3>Search</h3>
+          </Link>
+          <Link to='/bookmarks'>
+          <BsBookmarkStar size={60} />
+          <h3>My Spots</h3>
           </Link>
         </div>
       </div>

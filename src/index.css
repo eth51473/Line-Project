@@ -3,6 +3,8 @@
   padding: 0px;
 }
 body {
+  height:100vh;
+  width: 100vw;
   background-color: lightgray;
   font-family: 'Roboto Mono', monospace;
   /* background-image: url('https://cdn.pixabay.com/photo/2017/01/31/00/41/flowers-2022672_960_720.png'); */
@@ -221,12 +223,13 @@ input:focus {
   margin: 7px 20px;
   width:250px;
   padding: 15px;
+  padding-right: 0px;
   border-radius: 4px;
   line-height: 26px;
 }
 .expand{
   position: relative;
-  right: -20px;
+  right: 0px;
   top:-15px;
 }
 .expand:hover{
@@ -236,6 +239,12 @@ input:focus {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+.modal{
+  position:relative
+}
+.bookmark-btn:hover{
+  cursor: pointer;
 }
 .logout{
   background:none;
@@ -274,6 +283,7 @@ input:focus {
 .popup-content {
   -webkit-animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
 }
+
 
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */

@@ -10,6 +10,7 @@ import AddPost from './AddPost'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import Bookmark from './Bookmark'
+import BookmarkUpdate from './BookmarkUpdate'
 function App() {
   const [isLoggedIn,setIsLoggedIn] = useState(false)
   const [signUpStatus,setSignUpStatus] = useState(false)
@@ -29,7 +30,7 @@ function App() {
   })
   },[])
   return (
-    <div>
+    <div className="noselect">
       <Header 
       loginStatus= {isLoggedIn} 
       updateLoginStatus={setIsLoggedIn} 
@@ -75,6 +76,11 @@ function App() {
         <Route exact path = "/bookmarks">
           {!isLoggedIn? <Redirect to="/login" />:
           <Bookmark/>}
+        </Route>
+
+        <Route exact path = "/bookmarkupdate">
+          {!isLoggedIn? <Redirect to="/login" />:
+          <BookmarkUpdate />}
         </Route>
 
       </Switch>

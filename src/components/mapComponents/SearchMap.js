@@ -14,6 +14,12 @@ export function MapContainer ({google}){
   const [userLat,setUserLat] = useState(40.39)
   const [userLong,setUserLong] = useState(-111.7)
   const [markerList,setMarkerList] =useState([])
+  // const [markerInfo,setMarkerInfo]=useState('')
+  // const infoDisplay = (item)=>{
+  //   console.log(item)
+  //   setMarkerInfo(item.label)
+  // }
+
   useEffect(()=>{
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition((position)=>{
@@ -66,7 +72,10 @@ export function MapContainer ({google}){
           animation = {google.maps.Animation.DROP}
           style={{color:'red'}}
           label={`${item.label}`}
+          // onClick={(item)=>infoDisplay(item)}
           />
+           
+          
         )
         }
       })
