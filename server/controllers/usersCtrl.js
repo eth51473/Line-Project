@@ -48,7 +48,7 @@ module.exports = {
     }else{
       res.status(401).send({auth: false, message: "user not found" })
     }
-    
+    res.status(401).send('no such user exists')
   }
      
 };
