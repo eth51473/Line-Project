@@ -31,7 +31,7 @@ function SignUp({signUpStatus}) {
     onSubmit= {async(values) =>{
       let {username,password} = values
       try {
-        const response = await axios.post('http://localhost:3001/api/newuser',{
+        const response = await axios.post('/api/newuser',{
         username,
         password
     })

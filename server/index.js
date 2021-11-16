@@ -34,11 +34,14 @@ const verifyJWT = (req,res,next) =>{
 app.get('/api/isuserauth',verifyJWT,(req,res)=>{
   res.json({auth: true, message: "Authenticated"})
 })
+
 app.post('/api/newuser',uCtrl.newUser)
 app.post('/api/login',  uCtrl.login)
+
 app.post('/api/newspot',spotCtrl.newSpot)
 app.get('/api/findspots',spotCtrl.getSpots)
 app.get('/api/getcoords',spotCtrl.allCoords)
+
 app.get('/api/bookmarks', spotCtrl.bookmarks)
 app.get('/api/newbookmark',spotCtrl.newBookmark)
 app.get('/api/savedspots',spotCtrl.savedSpots)

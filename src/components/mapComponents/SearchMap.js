@@ -29,7 +29,7 @@ export function MapContainer ({google}){
     }else{
       alert('sorry this feature is only available if you allow us access to your location.')
     }
-      axios.get('http://localhost:3001/api/getcoords')
+      axios.get('/api/getcoords')
       .then((req,res)=>{
         console.log(req.data)
           const markerPos =req.data[0].map((item)=>{
