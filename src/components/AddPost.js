@@ -55,7 +55,7 @@ function AddPost() {
           let { title, line_length, description, location } = values;
           try {
             const response = await axios.post(
-              "http://localhost:3001/api/newspot",
+              "/api/newspot",
               {
                 title,
                 line_length,

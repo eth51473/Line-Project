@@ -16,7 +16,7 @@ function SearchPage({ sideBar, setSideBar }) {
     let curUser = localStorage.getItem("user");
     if (curUser) {
       const bookmarkRes = await axios.get(
-        `http://localhost:3001/api/newbookmark`,
+        `/api/newbookmark`,
         {
           headers: {
             spotid: id,
@@ -33,7 +33,7 @@ function SearchPage({ sideBar, setSideBar }) {
   };
   const makeRequest = async (e) => {
     e.preventDefault();
-    const res = await axios.get(`http://localhost:3001/api/findspots`, {
+    const res = await axios.get(`/api/findspots`, {
       params: { searchTxt },
     });
     if (res.data[0].length > 0) {

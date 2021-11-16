@@ -7,7 +7,7 @@ const mapStyles = {
   height: '100%',
   margin:'auto'
 };
-const {GAPI_KEY} = process.env
+const API_KEY = process.env.REACT_APP_API_KEY
 
 export function MapContainer ({google,setSpotLat,setSpotLng}){
   
@@ -63,5 +63,5 @@ export function MapContainer ({google,setSpotLat,setSpotLng}){
 }
 
 export default GoogleApiWrapper({
-  apiKey: GAPI_KEY
+  apiKey: API_KEY
 })(MapContainer);

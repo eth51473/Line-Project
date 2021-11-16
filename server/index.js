@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const sequelize = require('./database/seq')
+const path = require('path')
 const app = express()
 const uCtrl = require("./controllers/usersCtrl")
 const spotCtrl = require("./controllers/spotsCtrl")
@@ -9,7 +10,7 @@ const jwt = require('jsonwebtoken')
 require("dotenv").config();
 app.use(cors())
 app.use(express.json())
-// app.use(express.static(path.resolve(__dirname,"../build")))
+app.use(express.static(path.resolve(__dirname,"../build")))
 //middleware
 const {JWTSECRET} = process.env
 const verifyJWT = (req,res,next) =>{
@@ -42,9 +43,12 @@ app.get('/api/bookmarks', spotCtrl.bookmarks)
 app.get('/api/newbookmark',spotCtrl.newBookmark)
 app.get('/api/savedspots',spotCtrl.savedSpots)
 app.delete('/api/deletebookmark',spotCtrl.delete)
-// app.get('/*', function (req,res) {
-//   res.sendFile(path.join(__dirname, '../build', 'index.html'))
-// })
-app.listen(3001,()=>{
-  console.log('up and running on 3001')
+
+
+app.get('/*', function (req,res) {
+  res.sendFile(path.join(__dirname, '../build', 'index.html'))
+})
+const {PORT} = process.env
+app.listen(PORT,()=>{
+  console.log(`up and running on${PORT}`)
 })

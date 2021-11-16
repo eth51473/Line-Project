@@ -12,10 +12,6 @@ function Body() {
         <h2>by you</h2>
         <div className="icon-box">
           <Link to="/map">
-            {/* <img
-              id="nearme"
-              src="https://cdn.pixabay.com/photo/2013/07/13/14/05/location-162102_960_720.png"
-            /> */}
             <BsPinMap size={60} />
             <h3>Near Me</h3>
           </Link>

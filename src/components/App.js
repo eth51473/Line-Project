@@ -17,7 +17,7 @@ function App() {
   const [sideBar, setSideBar] = useState(false)
   useEffect(()=>{
     
-    axios.get('http://localhost:3001/api/isuserauth',{
+    axios.get('/api/isuserauth',{
       headers:{
         "x-access-token":localStorage.getItem("token")
       }

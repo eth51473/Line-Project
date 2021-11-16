@@ -19,14 +19,14 @@ function BookmarkUpdate() {
     console.log('hello')
     console.log(curSpot)
     
-    axios.delete('http://localhost:3001/api/deletebookmark',{data:{spot:curSpot,username:localStorage.getItem('user')}}).then((req,res)=>{
+    axios.delete('/api/deletebookmark',{data:{spot:curSpot,username:localStorage.getItem('user')}}).then((req,res)=>{
       closeInnerModal();
     }).catch((err)=>console.log(err))
     
   }
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/api/bookmarks`, {
+      .get(`/api/bookmarks`, {
         headers: {
           username: localStorage.getItem("user"),
         },
@@ -34,7 +34,7 @@ function BookmarkUpdate() {
       .then((req, res) => {
         req.data[0].map((spot, index) => {
           axios
-            .get(`http://localhost:3001/api/savedspots`, {
+            .get(`/api/savedspots`, {
               headers: {
                 spot: spot.spot_id,
               },

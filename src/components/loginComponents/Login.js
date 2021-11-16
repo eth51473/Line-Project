@@ -30,7 +30,7 @@ function Login({loginStatus, updateLoginStatus}) {
       onSubmit={async (values) => {
         let { username, password } = values;
         try {
-          const response = await axios.post("http://localhost:3001/api/login", {
+          const response = await axios.post("/api/login", {
           username,
           password,
         })
@@ -39,7 +39,7 @@ function Login({loginStatus, updateLoginStatus}) {
           if(token){
             localStorage.setItem('token', token)
 
-            const authResponse = await axios.get('http://localhost:3001/api/isuserauth',{
+            const authResponse = await axios.get('/api/isuserauth',{
               headers:{
                 "x-access-token":localStorage.getItem("token")
               }
