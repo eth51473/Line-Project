@@ -25,7 +25,7 @@
     "react-icons": "^4.3.1",
     "react-router": "^5.2.1",
     "react-router-dom": "^5.3.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^4.0.3",
     "react-toastify": "^8.1.0",
     "reactjs-popup": "^2.0.5",
     "sequelize": "^6.9.0",
@@ -34,8 +34,8 @@
   },
   "scripts": {
     "go": "react-scripts start",
-    "start":"node ./server/index.js && npm build",
-    "build:": "react-scripts build",
+    "start": "node ./server/index.js && npm build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
