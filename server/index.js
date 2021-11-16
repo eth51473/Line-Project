@@ -10,7 +10,7 @@ const jwt = require('jsonwebtoken')
 require("dotenv").config();
 app.use(cors())
 app.use(express.json())
-app.use(express.static(path.resolve(__dirname,"../build")))
+app.use(express.static(path.resolve(__dirname, "../build")))
 //middleware
 const {JWTSECRET} = process.env
 const verifyJWT = (req,res,next) =>{
@@ -47,8 +47,10 @@ app.delete('/api/deletebookmark',spotCtrl.delete)
 
 app.get('/*', function (req,res) {
   res.sendFile(path.join(__dirname, '../build', 'index.html'))
-})
+});
+
+
 const {PORT} = process.env
-app.listen(PORT,()=>{
+app.listen(PORT, ()=>{
   console.log(`up and running on${PORT}`)
 })
