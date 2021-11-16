@@ -35,7 +35,7 @@ function Header({loginStatus,updateLoginStatus,updateSignUpStatus,sideBar,setSid
         {navData.map((item,index)=>{
           return(
             <li key={index}>
-              <Link onClick ={()=>sideBar? displayMenu(): null} to={item.path}>{item.title}</Link>
+              <Link to={item.path}>{item.title}</Link>
             </li>
           )
         })}
