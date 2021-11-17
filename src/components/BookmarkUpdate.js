@@ -83,7 +83,7 @@ function BookmarkUpdate() {
                     onClose ={closeModal}
                     contentStyle={{
                       padding: "20px",
-                      width: "350px",
+                      width: "325px",
                     }}
                     trigger ={<span className="expand" >
                           <MdExpandLess size={25} />
@@ -113,7 +113,7 @@ function BookmarkUpdate() {
                     onClose ={closeInnerModal}
                     contentStyle={{
                       padding: "20px",
-                      width: "350px",
+                      width: "300px",
                     }}
                     // trigger={
                       // <span className="expand">
@@ -127,8 +127,8 @@ function BookmarkUpdate() {
                     <div>
                       <p>Are you sure you want to delete this spot?</p>
                       <div className="flex-center">
-                      <button onClick={closeInnerModal}> Not Now</button>
-                      <button onClick={()=> deleteBookmark(favSpot.title)}>Delete</button>
+                      <button className="bookmark-btn-inner" onClick={closeInnerModal}> Not Now</button>
+                      <button onClick={()=> deleteBookmark(favSpot.title)}className="bookmark-btn-inner">Delete</button>
                       </div>
                     </div>
                     </Popup>

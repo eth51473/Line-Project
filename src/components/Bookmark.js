@@ -77,7 +77,7 @@ function Bookmark() {
                     onClose ={closeModal}
                     contentStyle={{
                       padding: "20px",
-                      width: "350px",
+                      width: "325px",
                     }}
                     trigger ={<span className="expand" >
                           <MdExpandLess size={25} />
