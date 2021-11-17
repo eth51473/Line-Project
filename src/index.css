@@ -258,9 +258,9 @@ input:focus {
   background-color: #77bfa3;
   border:none;
   color: white;
-  padding: 7px;
+  padding: 4px;
   font-size: 16px;
-  width: 75px;
+  width: 100px;
   transition: 400ms;
   border-radius: 1px;
 }

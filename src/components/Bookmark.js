@@ -120,6 +120,7 @@ function Bookmark() {
                   >
                     <div>
                       <p>Are you sure you want to delete this spot?</p>
+                      <br />
                       <div className="flex-center">
                       <button className="bookmark-btn-inner" onClick={closeInnerModal}> Not Now</button>
                       <button onClick={()=> deleteBookmark(favSpot.title)} className="bookmark-btn-inner">Delete</button>
