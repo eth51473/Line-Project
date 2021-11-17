@@ -94,7 +94,7 @@ function Bookmark() {
                         display: "inline",
                         background: "none",
                         border: "none",
-                        left: "330px",
+                        left: "310px",
                         top: "-5px",
                       }}
                     >
