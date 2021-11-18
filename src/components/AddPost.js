@@ -18,10 +18,10 @@ function AddPost() {
       .typeError("line length must be a number")
       .max(20000, "This Line Is too long")
       .required("line_length is Required"),
-    description: yup
-      .string()
-      .max(250, "must be under 250 characters")
-      .required("description is Required"),
+    // description: yup
+    //   .string()
+    //   .max(250, "must be under 250 characters")
+    //   .required("description is Required"),
     location: yup
       .string()
       .max(50, "must be under 250 characters")
@@ -37,6 +37,7 @@ function AddPost() {
   });
   const [spotLat, setSpotLat] = useState("");
   const [spotLng, setSpotLng] = useState("");
+  const [desc, setDesc] = useState("");
   return (
     <div className="forms">
       <Formik
@@ -52,13 +53,13 @@ function AddPost() {
         validationSchema={validate}
         onSubmit={async(values) => {
           console.log("hello please work");
-          let { title, line_length, description, location } = values;
-          console.log(description);
+          let { title, line_length, location } = values;
+          console.log(desc)
           try {
             const response = await axios.post("/api/newspot", {
               title,
               line_length,
-              description,
+              description: desc,
               location,
               coords: {
                 lat: `${spotLat}`,
@@ -90,7 +91,6 @@ function AddPost() {
                 placeholder="line length(ft)"
                 name="line_length"
                 type="text"
-                style={{}}
               />
               <TextField
                 label=""
@@ -141,6 +141,8 @@ function AddPost() {
                 name="description"
                 rows={7}
                 cols={38}
+                value={desc}
+                onChange={(e)=>setDesc(e.target.value)}
               />
               
               <button type="submit">submit</button>
