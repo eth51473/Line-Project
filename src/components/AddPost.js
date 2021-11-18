@@ -143,6 +143,7 @@ function AddPost() {
                 cols={38}
                 value={desc}
                 onChange={(e)=>setDesc(e.target.value)}
+                style={{padding:'5px'}}
               />
               
               <button type="submit">submit</button>
