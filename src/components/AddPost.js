@@ -50,24 +50,22 @@ function AddPost() {
           coords: "",
         }}
         validationSchema={validate}
-        onSubmit={async (values) => {
+        onSubmit={async(values) => {
           console.log("hello please work");
           let { title, line_length, description, location } = values;
+          console.log(description);
           try {
-            const response = await axios.post(
-              "/api/newspot",
-              {
-                title,
-                line_length,
-                description,
-                location,
-                coords: {
-                  lat: `${spotLat}`,
-                  lng: `${spotLng}`,
-                  label: title,
-                },
-              }
-            );
+            const response = await axios.post("/api/newspot", {
+              title,
+              line_length,
+              description,
+              location,
+              coords: {
+                lat: `${spotLat}`,
+                lng: `${spotLng}`,
+                label: title,
+              },
+            });
             toast.success("new spot successfully created");
           } catch (error) {
             toast.info("this title is already taken");
@@ -89,15 +87,10 @@ function AddPost() {
               />
               <TextField
                 label=""
-                placeholder="line_length"
+                placeholder="line length(ft)"
                 name="line_length"
                 type="text"
-              />
-              <TextField
-                label=""
-                placeholder="description"
-                name="description"
-                type="text"
+                style={{}}
               />
               <TextField
                 label=""
@@ -106,7 +99,12 @@ function AddPost() {
                 type="text"
               />
               <Popup
-                contentStyle={{background:'none',border:'none',width:'50vw',height: '50vh'}}
+                contentStyle={{
+                  background: "none",
+                  border: "none",
+                  width: "50vw",
+                  height: "50vh",
+                }}
                 trigger={
                   <span>
                     Use Map For Exact Coords
@@ -116,9 +114,12 @@ function AddPost() {
                   </span>
                 }
                 modal
-                position="top top"
+                position="top center"
               >
-                <h3 style={{backgroundColor:'white',marginBottom:'5px'}}>Click a point on the map to place marker and get  exact coordinates </h3>
+                <h3 style={{ backgroundColor: "white", marginBottom: "5px" }}>
+                  Click a point on the map to place marker and get exact
+                  coordinates{" "}
+                </h3>
                 <AddSpotMap setSpotLat={setSpotLat} setSpotLng={setSpotLng} />
               </Popup>
               <TextField
@@ -135,6 +136,13 @@ function AddPost() {
                 type="text"
                 value={spotLng}
               />
+              <textarea
+                placeholder="please leave a detailed description ex: This line is on the east end of the park the first tree is next to the pavilion."
+                name="description"
+                rows={7}
+                cols={38}
+              />
+              
               <button type="submit">submit</button>
             </Form>
           </div>
