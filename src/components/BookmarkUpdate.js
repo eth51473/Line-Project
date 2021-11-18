@@ -54,9 +54,9 @@ function BookmarkUpdate() {
             })
             .catch((err) => {
               console.log(err);
-            });
-            setLoading(false)
+            }); 
         });
+        setLoading(false)
       })
       .catch((err) => console.log(err));
       
